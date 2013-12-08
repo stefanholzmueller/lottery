@@ -1,5 +1,5 @@
-/// <reference path="lib/angular.d.ts" />
-/// <reference path="lib/underscore.d.ts" />
+/// <reference path="lib/angular/angular.d.ts" />
+/// <reference path="lib/lodash/lodash.d.ts" />
 
 var app = angular.module("lottery", []);
 
