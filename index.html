@@ -13,7 +13,7 @@
     <tbody>
     <tr ng-repeat="p in participants">
         <td>
-            <input type="checkbox" ng-checked="p.active">
+            <input type="checkbox" ng-checked="p.active" ng-disabled="closed">
         </td>
         <td>
             {{ p.name }}
@@ -22,7 +22,15 @@
     </tbody>
 </table>
 <form ng-submit="addParticipant()">
-    <input type="text" ng-model="newParticipant" autofocus placeholder="neuer Teilnehmer" size="30">
+    <input type="text" ng-model="newParticipant" ng-disabled="closed" autofocus placeholder="neuer Teilnehmer">
+    <input type="submit" value="Hinzufügen">
 </form>
+<input type="button" value="Jetzt auslosen" ng-click="draw()">
+
+<div ng-show="closed">
+    <h3>
+        Der Gewinner ist: {{ winner }}
+    </h3>
+</div>
 </body>
 </html>
