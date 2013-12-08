@@ -9,5 +9,20 @@
     <link rel="stylesheet" type="text/css" href="crap.css"/>
 </head>
 <body ng-controller="LotteryController" keypress-events>
+<table>
+    <tbody>
+    <tr ng-repeat="p in participants">
+        <td>
+            <input type="checkbox" ng-checked="p.active">
+        </td>
+        <td>
+            {{ p.name }}
+        </td>
+    </tr>
+    </tbody>
+</table>
+<form ng-submit="addParticipant()">
+    <input type="text" ng-model="newParticipant" autofocus placeholder="neuer Teilnehmer" size="30">
+</form>
 </body>
 </html>
