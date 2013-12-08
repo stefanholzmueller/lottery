@@ -1,9 +1,8 @@
 package stefanholzmueller.lottery;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Path("lottery")
 public class LotteryService {
@@ -13,5 +12,13 @@ public class LotteryService {
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
         return "Got it!";
+    }
+
+    @PUT
+    @Path("draw")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String drawWinner(List<String> participants) {
+        return participants.get(1);
     }
 }
