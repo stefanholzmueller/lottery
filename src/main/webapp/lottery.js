@@ -7,9 +7,7 @@ app.controller("LotteryController", [
     'LotteryService',
     function ($scope, service) {
         $scope.closed = false;
-        $scope.participants = [
-            { name: "Tester", active: true }
-        ];
+        $scope.participants = [];
 
         $scope.addParticipant = function () {
             var newName = $scope.newParticipant;
