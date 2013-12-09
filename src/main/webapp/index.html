@@ -23,7 +23,7 @@
 </table>
 <form ng-submit="addParticipant()">
     <input type="text" ng-model="newParticipant" ng-disabled="closed" autofocus placeholder="neuer Teilnehmer">
-    <input type="submit" value="Hinzufügen">
+    <input type="submit" value="Hinzufügen" ng-disabled="closed">
 </form>
 <input type="button" value="Jetzt auslosen" ng-click="draw()">
 
