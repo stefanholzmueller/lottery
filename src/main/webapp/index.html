@@ -13,7 +13,7 @@
     <tbody>
     <tr ng-repeat="p in participants">
         <td>
-            <input type="checkbox" ng-checked="p.active" ng-disabled="closed">
+            <input type="checkbox" ng-model="p.active" ng-disabled="closed">
         </td>
         <td>
             {{ p.name }}
