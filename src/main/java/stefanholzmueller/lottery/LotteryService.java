@@ -1,5 +1,6 @@
 package stefanholzmueller.lottery;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -7,11 +8,14 @@ import java.util.List;
 @Path("lottery")
 public class LotteryService {
 
+    @Inject
+    private LotteryManager controller;
+
     @GET
     @Path("test")
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
-        return "Got it!";
+        return controller.hello();
     }
 
     @PUT
