@@ -9,13 +9,17 @@ import java.util.List;
 public class LotteryService {
 
     @Inject
-    private LotteryManager controller;
+    public LotteryService(LotteryManager manager) {
+        this.manager = manager;
+    }
+
+    private LotteryManager manager;
 
     @GET
     @Path("test")
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt() {
-        return controller.hello();
+        return manager.hello();
     }
 
     @PUT
