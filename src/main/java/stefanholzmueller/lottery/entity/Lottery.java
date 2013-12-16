@@ -1,4 +1,4 @@
-package stefanholzmueller.lottery.entities;
+package stefanholzmueller.lottery.entity;
 
 import javax.persistence.*;
 

@@ -1,4 +1,4 @@
-package stefanholzmueller.lottery.entities;
+package stefanholzmueller.lottery.entity;
 
 import org.junit.After;
 import org.junit.Before;
