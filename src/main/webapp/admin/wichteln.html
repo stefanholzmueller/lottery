@@ -14,21 +14,21 @@
     <input type="text" ng-model="newParticipant" ng-disabled="closed" autofocus placeholder="neuer Teilnehmer">
     <input type="submit" value="Hinzufügen" ng-disabled="closed">
 </form>
-<ul>
+<ol>
     <li ng-repeat="p in participants">
         {{ p.name }}
     </li>
-</ul>
+</ol>
 
 <form ng-submit="addPresent()">
     <input type="text" ng-model="newPresent" ng-disabled="closed" placeholder="neuer Gewinn">
     <input type="submit" value="Hinzufügen" ng-disabled="closed">
 </form>
-<ul>
+<ol>
     <li ng-repeat="p in presents">
         {{ p.name }}
     </li>
-</ul>
+</ol>
 
 <input type="button" value="Jetzt auslosen" ng-click="draw()" ng-disabled="closed">
 
