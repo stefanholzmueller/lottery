@@ -46,7 +46,7 @@ app.controller("WichtelnController", [
             });
 
             $scope.shuffledPresents = _.shuffle(presents);
-            // $scope.closed = true;
+            $scope.shuffled = true;
         };
     }
 ]);
