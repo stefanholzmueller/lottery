@@ -1,36 +1,49 @@
 <!DOCTYPE html>
-<html ng-app="lottery">
+<html ng-app="admin">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>N3rDs Weihnachtswichteln</title>
     <script src="../lib/angular/angular.js" type="text/javascript"></script>
     <script src="../lib/lodash/lodash.js" type="text/javascript"></script>
-    <script src="lottery.js" type="text/javascript"></script>
+    <script src="admin.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="../crap.css"/>
 </head>
-<body ng-controller="WichtelnController" keypress-events>
-<table>
-    <tbody>
-    <tr ng-repeat="p in participants">
-        <td>
-            <input type="checkbox" ng-model="p.active" ng-disabled="closed">
-        </td>
-        <td>
-            {{ p.name }}
-        </td>
-    </tr>
-    </tbody>
-</table>
+<body ng-controller="WichtelnController">
+
 <form ng-submit="addParticipant()">
     <input type="text" ng-model="newParticipant" ng-disabled="closed" autofocus placeholder="neuer Teilnehmer">
     <input type="submit" value="Hinzufügen" ng-disabled="closed">
 </form>
+<ul>
+    <li ng-repeat="p in participants">
+        {{ p.name }}
+    </li>
+</ul>
+
+<form ng-submit="addPresent()">
+    <input type="text" ng-model="newPresent" ng-disabled="closed" placeholder="neuer Gewinn">
+    <input type="submit" value="Hinzufügen" ng-disabled="closed">
+</form>
+<ul>
+    <li ng-repeat="p in presents">
+        {{ p.name }}
+    </li>
+</ul>
+
 <input type="button" value="Jetzt auslosen" ng-click="draw()" ng-disabled="closed">
 
-<div ng-show="closed">
-    <h3>
-        Der Gewinner ist: {{ winner }}
-    </h3>
-</div>
+<table ng-show="closed">
+    <thead>
+    <th>Teilnehmer</th>
+    <th>Gewinn</th>
+    </thead>
+    <tbody>
+    <tr ng-repeat="p in participants">
+        <td>{{p.name}}</td>
+        <td>{{shuffledPresents[$index]}}</td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>

@@ -1,36 +1,55 @@
 /// <reference path="../lib/angular/angular.d.ts" />
 /// <reference path="../lib/lodash/lodash.d.ts" />
-var app = angular.module("lottery", []);
+var app = angular.module("admin", []);
 
 app.controller("WichtelnController", [
     '$scope',
     function ($scope) {
         $scope.closed = false;
         $scope.participants = [];
+        $scope.presents = [];
 
-        $scope.addParticipant = function () {
-            var newName = $scope.newParticipant;
-            var exists = _.find($scope.participants, function (x) {
+        function addToListIfUnique(collection, newName) {
+            if (newName.length === 0) {
+                alert("Kein Name angegeben");
+            } else if (_.find(collection, function (x) {
                 return x.name === newName;
-            });
-            if (exists) {
+            })) {
                 alert("Name schon in Liste vorhanden");
             } else {
-                $scope.participants.push({ name: newName, active: true });
+                collection.push({ name: newName });
                 $scope.newParticipant = "";
+                $scope.newPresent = "";
             }
+        }
+
+        $scope.addParticipant = function () {
+            addToListIfUnique($scope.participants, $scope.newParticipant);
+        };
+
+        $scope.addPresent = function () {
+            addToListIfUnique($scope.presents, $scope.newPresent);
         };
 
         $scope.draw = function () {
-            var chosen = _.filter($scope.participants, function (x) {
-                return x.active;
-            });
-            var names = _.map(chosen, function (x) {
+            if ($scope.participants.length === 0) {
+                alert("Keine Teilnehmer angegeben!");
+                return;
+            }
+            if ($scope.participants.length != $scope.presents.length) {
+                alert("Die Anzahl der Teilnehmer muss gleich der Anzahl der Gewinne sein!");
+                return;
+            }
+
+            var participants = _.map($scope.participants, function (x) {
                 return x.name;
             });
-            if (names.length > 0) {
-                $scope.closed = true;
-            }
+            var presents = _.map($scope.presents, function (x) {
+                return x.name;
+            });
+
+            $scope.shuffledPresents = _.shuffle(presents);
+            $scope.closed = true;
         };
     }
 ]);
