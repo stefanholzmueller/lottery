@@ -1,0 +1,10 @@
+.box{
+    float:left;
+    margin:10px 50px 10px 10px;
+    width: 500px;
+    height:1000px;
+}
+
+#box2{
+    margin-left:0;
+}

@@ -10,40 +10,43 @@
 </head>
 <body ng-controller="WichtelnController">
 
-<form ng-submit="addParticipant()">
-    <input type="text" ng-model="newParticipant" ng-disabled="closed" autofocus placeholder="neuer Teilnehmer">
-    <input type="submit" value="Hinzufügen" ng-disabled="closed">
-</form>
-<ol>
-    <li ng-repeat="p in participants">
-        <input type="text" ng-model="p.name">
-    </li>
-</ol>
+<div id="box1" class="box">
+        <form ng-submit="addParticipant()">
+            <input type="text" ng-model="newParticipant" ng-disabled="closed" autofocus placeholder="neuer Teilnehmer">
+            <input type="submit" value="Hinzufügen" ng-disabled="closed">
+        </form>
+        <ol>
+            <li ng-repeat="p in participants">
+                <input type="text" ng-model="p.name" size="50" maxlength="50">
+            </li>
+        </ol>
 
-<form ng-submit="addPresent()">
-    <input type="text" ng-model="newPresent" ng-disabled="closed" placeholder="neuer Gewinn">
-    <input type="submit" value="Hinzufügen" ng-disabled="closed">
-</form>
-<ol>
-    <li ng-repeat="p in presents">
-        <input type="text" ng-model="p.name">
-    </li>
-</ol>
+        <form ng-submit="addPresent()">
+            <input type="text" ng-model="newPresent" ng-disabled="closed" placeholder="neuer Gewinn">
+            <input type="submit" value="Hinzufügen" ng-disabled="closed">
+        </form>
+        <ol>
+            <li ng-repeat="p in presents">
+                <input type="text" ng-model="p.name" size="50" maxlength="50">
+            </li>
+        </ol>
 
-<input type="button" value="Jetzt auslosen" ng-click="draw()" ng-disabled="closed">
-
-<table ng-show="shuffled">
-    <thead>
-    <th>Teilnehmer</th>
-    <th>Gewinn</th>
-    </thead>
-    <tbody>
-    <tr ng-repeat="p in participants">
-        <td>{{p.name}}</td>
-        <td>{{shuffledPresents[$index]}}</td>
-    </tr>
-    </tbody>
-</table>
+        <input type="button" value="Jetzt auslosen" ng-click="draw()" ng-disabled="closed">
+</div>
+<div id="box2" class="box">
+        <table ng-show="shuffled">
+            <thead>
+            <th>Teilnehmer</th>
+            <th>Gewinn</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="p in participants">
+                <td>{{p.name}}</td>
+                <td>{{shuffledPresents[$index]}}</td>
+            </tr>
+            </tbody>
+        </table>
+</div>
 
 </body>
 </html>
