@@ -43,11 +43,9 @@ app.controller("WichtelnController", ['$scope', function ($scope) {
 			return;
 		}
 
-		var participants = _.map($scope.participants, x => x.name);
 		var presents = _.map($scope.presents, x => x.name);
 
 		$scope.shuffledPresents = _.shuffle(presents);
 		$scope.closed = true;
 	}
-}])
-;
+}]);

@@ -41,9 +41,6 @@ app.controller("WichtelnController", [
                 return;
             }
 
-            var participants = _.map($scope.participants, function (x) {
-                return x.name;
-            });
             var presents = _.map($scope.presents, function (x) {
                 return x.name;
             });
