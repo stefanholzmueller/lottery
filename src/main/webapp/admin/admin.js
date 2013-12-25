@@ -1,11 +1,10 @@
 /// <reference path="../lib/angular/angular.d.ts" />
-/// <reference path="lib/lodash/lodash.d.ts" />
+/// <reference path="../lib/lodash/lodash.d.ts" />
 var app = angular.module("lottery", []);
 
-app.controller("LotteryController", [
+app.controller("WichtelnController", [
     '$scope',
-    'LotteryService',
-    function ($scope, service) {
+    function ($scope) {
         $scope.closed = false;
         $scope.participants = [];
 
@@ -31,18 +30,8 @@ app.controller("LotteryController", [
             });
             if (names.length > 0) {
                 $scope.closed = true;
-                $scope.winner = service.draw(names);
             }
         };
     }
 ]);
-
-app.service("LotteryService", function () {
-    return {
-        draw: function (names) {
-            var randomized = _.shuffle(names);
-            return _.first(randomized);
-        }
-    };
-});
-//# sourceMappingURL=lottery.js.map
+//# sourceMappingURL=admin.js.map
